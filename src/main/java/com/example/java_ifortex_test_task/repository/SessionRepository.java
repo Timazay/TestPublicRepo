@@ -15,6 +15,7 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
 
     @Query(value = "SELECT s.* FROM sessions s " +
             "JOIN users u ON s.user_id = u.id " +
-            "WHERE u.deleted = false AND s.ended_at_utc < :endDate", nativeQuery = true)
+            "WHERE s.ended_at_utc < :endDate", nativeQuery = true)
     List<Session> getSessionsFromActiveUsersEndedBefore2025(LocalDateTime endDate);
+    /*u.deleted = false AND*/
 }
